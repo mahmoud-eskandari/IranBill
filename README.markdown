@@ -1,7 +1,7 @@
 # IranBill
 Iran bill's validation and information function in javascript
 ##تابع تشخیص صحت اطلاعات قبوض ایران در جاوا اسکریپت
-
+### تابع قبض جاوا اسکریپت
 ###No need to jQuery!
 ###Tested and reliable
 
