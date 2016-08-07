@@ -6,7 +6,7 @@ Iran bill's validation and information function in javascript
 ###Tested and reliable
 
 ##Easy to use
-just Call `IranBill`
+just Call `IranBill()`
 ###Example
 ```javascript
 <script> IranBill(bill_number,payment_id) </script>
