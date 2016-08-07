@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../Iranbill.js" ></script>
+	<title>تست پرداخت قبض</title>
+	<script>
+		function get_type_name(type) {
+			switch (type){
+				case "1":
+					return "آب";
+					break;
+				case "2":
+					return "برق";
+					break;
+				case "3":
+					return "گاز";
+					break;
+				case "4":
+					return "تلفن ثابت";
+					break;
+				case "5":
+					return "موبایل";
+					break;
+				case "6":
+					return "شهرداری";
+					break;
+			}
+			return "";
+		}
+		function get_bill(){
+			var bill_number = document.getElementById("bill_number").value;
+			var payment_id = document.getElementById("payment_id").value;
+			if(bill_number.length > 12 && payment_id.length > 7){
+				var out = IranBill(bill_number,payment_id);
+				//If Bill Not Valid
+				if(out[0] == -1){
+					alert("شماره قبض نامعتبر است")
+				}else if(out[0] == -2){
+				//if Payment Id not Valid
+					alert(" شناسه ی نامعتبر است")
+				}else{
+					//IF Bill Is Valid
+					document.getElementById("result").innerHTML =
+							"قبض " + get_type_name(out[3]) +
+									" به مبلغ: "+out[2]+" ریال";
+				}
+			}
+		}
+	</script>
+	<style>
+		body{
+			font-family: sans-serif,tahoma,arial;
+		}
+		.container{
+			width:200px;
+			margin:0 auto;
+			text-align: center;
+		}
+		input{
+			margin-top:15px;
+			padding:3px;
+			width: 100%;
+			height: 16px;
+			font-family: sans-serif,tahoma,arial;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input onchange="get_bill()" id="bill_number" placeholder="شماره قبض" ><br>
+		<input onchange="get_bill()" id="payment_id" placeholder="شناسه پرداخت" >
+		<br><br>
+		<div id="result"></div>
+	</div>
+</body>
+</html>
