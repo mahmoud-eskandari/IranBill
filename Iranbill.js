@@ -22,11 +22,11 @@ function IranBill(Bill_number, Payment_id) {
         return [-1];
     }
     //Check Payment Number Length
-    if (Payment_id.length < 8) {
+    if (Payment_id.length < 7) {
         return [-2];
     }
 
-    Payment_id = '0000000'.substring(0, 13 - Payment_id.length) + Payment_id;
+    Payment_id = '000000'.substring(0, 13 - Payment_id.length) + Payment_id;
     var bid_sp = Bill_number.split("");
     var pid_sp = Payment_id.split("");
     out['type'] = bid_sp[11];
@@ -42,7 +42,7 @@ function IranBill(Bill_number, Payment_id) {
     if (M > 9)
         M = 0;
 
-    if (M != r_bid[0]) {
+    if (M != parseInt(r_bid[0])) {
         return [-1];
     }
     /**
@@ -58,7 +58,7 @@ function IranBill(Bill_number, Payment_id) {
     if (M > 9)
         M = 0;
     //Check Bill Number
-    if (M != r_pid[1]) {
+    if (M != parseInt(r_pid[1])) {
         return [-2];
     }
     //Final Check
@@ -74,7 +74,7 @@ function IranBill(Bill_number, Payment_id) {
     if (M > 9)
         M = 0;
     //Check Bill Number
-    if (M != r_pid[0]) {
+    if (M != parseInt(r_pid[0])) {
         return [-2];
     }
     out['fee'] = parseInt(Payment_id.substring(0, 8)) * 1000;
